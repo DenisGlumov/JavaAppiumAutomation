@@ -9,4 +9,8 @@ public class MainClassTest {
     public void testGetLocalNumber() {
         Assert.assertTrue("тест не пройден, возвращаемое число не равно 14", mainClass.getLocalNumber() == 14);
     }
+    @Test
+    public void testGetClassNumber() {
+        Assert.assertTrue("число меньше чем 45",mainClass.getClassNumber()>45);
+    }
 }
