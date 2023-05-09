@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 public class FirstTest {
 
@@ -130,6 +131,47 @@ public class FirstTest {
                 By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
                 "Search Wikipedia",
                 "text is different"
+        );
+    }
+
+    @Test
+    public void testHomeWork2_2() {
+        WebElement elementSkip = driver.findElementById("fragment_onboarding_skip_button");
+        elementSkip.click();
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find search 'Search Wikipedia' input",
+                5
+        );
+        waitForElementAndSendKeys(By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "football",
+                "Cannot find search input",
+                5);
+        WebElement elementCount2 = driver.findElement(By.id("org.wikipedia:id/page_list_item_title"));
+
+//        ArrayList <WebElement> elementArrayList = new ArrayList<WebElement>().;
+//        elementArrayList.
+//        int y = elementArrayList.size();
+//        System.out.println(y);
+//        //WebElement elementCount2 = driver.findElement(By.id("org.wikipedia:id/page_list_item_title"));
+////
+////        WebElement elementCount = driver.findElementById("org.wikipedia:id/page_list_item_title");
+////        System.out.println(elementCount2);
+
+        waitForElementAndClear(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Cannot find search field",
+                5
+        );
+
+        waitForElementAndClick(By.xpath("//*[contains(@content-desc, 'Navigate up')]"),
+                "Cannot find search button to cancel search ",
+                5
+        );
+
+        waitForElementNotPresent(By.id("Navigate up"),
+                "Button back still present on the page",
+                10
         );
     }
 
