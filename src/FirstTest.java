@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FirstTest {
 
@@ -168,6 +169,29 @@ public class FirstTest {
                 "Button back still present on the page",
                 10
         );
+    }
+
+    @Test
+    public void testHomeWork2_3() {
+        WebElement elementSkip = driver.findElementById("fragment_onboarding_skip_button");
+        elementSkip.click();
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find search 'Search Wikipedia' input",
+                5
+        );
+        waitForElementAndSendKeys(By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "java",
+                "Cannot find search input",
+                5);
+        int elementCount = driver.findElements(By.id("org.wikipedia:id/page_list_item_title")).size();
+        List<WebElement> elementSearch = driver.findElements(By.id("org.wikipedia:id/page_list_item_title"));
+
+        for (int i=0; i<elementCount; i++) {
+            System.out.println(elementSearch.get(i).getAttribute("text"));
+            Assert.assertTrue(elementSearch.get(i).getAttribute("text").contains("Java"));
+        }
+
     }
 
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds) {
