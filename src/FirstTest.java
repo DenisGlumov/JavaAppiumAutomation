@@ -124,7 +124,7 @@ public class FirstTest {
     }
 
     @Test
-    public void testHomeWork2_1(){
+    public void testHomeWork2_1() {
         WebElement elementSkip = driver.findElementById("fragment_onboarding_skip_button");
         elementSkip.click();
         assertElementHasText(
@@ -147,16 +147,11 @@ public class FirstTest {
                 "football",
                 "Cannot find search input",
                 5);
-        WebElement elementCount2 = driver.findElement(By.id("org.wikipedia:id/page_list_item_title"));
+        int elementCount = driver.findElements(By.id("org.wikipedia:id/page_list_item_title")).size();
 
-//        ArrayList <WebElement> elementArrayList = new ArrayList<WebElement>().;
-//        elementArrayList.
-//        int y = elementArrayList.size();
-//        System.out.println(y);
-//        //WebElement elementCount2 = driver.findElement(By.id("org.wikipedia:id/page_list_item_title"));
-////
-////        WebElement elementCount = driver.findElementById("org.wikipedia:id/page_list_item_title");
-////        System.out.println(elementCount2);
+        Assert.assertNotEquals("Found only one article",
+                1,
+                elementCount);
 
         waitForElementAndClear(
                 By.id("org.wikipedia:id/search_src_text"),
