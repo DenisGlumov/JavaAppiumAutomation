@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -252,8 +253,14 @@ public class FirstTest {
                 5
         );
 
+        waitForMenuToRender(
+                By.id("org.wikipedia:id/title"),
+                "не найдено ничего",
+                10
+        );
+
         waitForElementAndClick(
-                By.xpath("//*[@text='Add to reading list']"),
+                By.xpath("//*[@class='android.widget.LinearLayout' and @index='2']"),
                 "Cannot find button to open article options",
                 5
         );
@@ -270,9 +277,11 @@ public class FirstTest {
                 5
         );
 
+        String name_of_folder = "Learning programming";
+
         waitForElementAndSendKeys(
                 By.id("org.wikipedia:id/text_input"),
-                "Learning programming",
+                name_of_folder,
                 "Cannot put text into articles folder input",
                 5
         );
@@ -295,14 +304,8 @@ public class FirstTest {
                 5
         );
 
-        waitForElementAndClick(
-                By.xpath("//*[@text='Learning programming']"),
-                "Cannot find My list",
-                5
-        );
-
-        waitForElementAndClick(
-                By.xpath("//*[@text='Java (programming language)']"),
+        waitMyFolderAndClick(
+                By.xpath("//*[@text='" + name_of_folder + "']"),
                 "Cannot find created folder",
                 5
         );
@@ -408,5 +411,22 @@ public class FirstTest {
                 .waitAction(150)
                 .moveTo(left_x, middle_y)
                 .release().perform();
+    }
+
+    private List waitForMenuToRender(By by, String error_message, long timeoutInSeconds) {
+        int test = driver.findElements(by).size();
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        wait.withMessage(error_message + "\n");
+        return wait.until(ExpectedConditions.numberOfElementsToBe(by,6));
+    }
+
+    private WebElement waitMyFolderAndClick(By by, String error_message, long timeoutInSeconds) {
+        int test = driver.findElements(by).size();
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        wait.withMessage(error_message + "\n");
+        wait.until(ExpectedConditions.numberOfElementsToBe(by,1));
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
+        element.click();
+        return element;
     }
 }
