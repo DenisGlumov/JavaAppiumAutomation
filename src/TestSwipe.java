@@ -88,10 +88,10 @@ public class TestSwipe {
     private WebElement waitForElementPresent(By by, String error_message) {
         return waitForElementPresent(by, error_message, 5);
     }
-
     protected void swipeUp(int timeOfSwipe) {
         TouchAction action = new TouchAction(driver);
         Dimension size = driver.manage().window().getSize();
+        System.out.println();
         int x = size.width/2;
         int start_y = (int) (size.height * 0.8);
         int end_y = (int) (size.height * 0.2);
