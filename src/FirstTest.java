@@ -24,7 +24,7 @@ public class FirstTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "AndroidTestDevice");
-        capabilities.setCapability("platformVersion", "10");
+        capabilities.setCapability("platformVersion", "9");
         capabilities.setCapability("automationName", "Appium");
         capabilities.setCapability("appPackage", "org.wikipedia");
         capabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
