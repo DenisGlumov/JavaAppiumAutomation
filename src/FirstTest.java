@@ -253,7 +253,7 @@ public class FirstTest {
         waitForMenuAppeared();
 
         waitForElementAndClick(
-                By.xpath("//*[@class='android.widget.LinearLayout' and @index='2']"),
+                By.xpath("//*[@text='Add to reading list']"),
                 "Cannot find button to open article options",
                 5
         );
