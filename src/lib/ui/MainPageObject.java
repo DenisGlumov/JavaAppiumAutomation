@@ -158,4 +158,39 @@ public class MainPageObject {
         WebElement element = waitForElementPresent(by, error_message, timeeoutInSeconds);
         return element.getAttribute(attribute);
     }
+
+    public void waitForMenuSecondAppeared() {
+        waitForElementPresent(
+                By.xpath("//*[@text='Change language']"),
+                "Cannot find text 'Change language'",
+                5
+        );
+        waitForElementPresent(
+                By.xpath("//*[@text='Share link']"),
+                "Cannot find text 'Share link'",
+                5
+        );
+        waitForElementPresent(
+                By.xpath("//*[@text='Add to reading list']"),
+                "Cannot find text 'Add to reading list'",
+                5
+        );
+        waitForElementPresent(
+                By.xpath("//*[@text='Find in page']"),
+                "Cannot find text 'Find in page'",
+                5
+        );
+        waitForElementPresent(
+                By.xpath("//*[@text='Font and theme']"),
+                "Cannot find text 'Font and theme'",
+                5
+        );
+    }
+
+    public void assertElementPresent(By by, String error_message) {
+        Assert.assertTrue(
+                error_message,
+                driver.findElement(by).isDisplayed()
+        );
+    }
 }

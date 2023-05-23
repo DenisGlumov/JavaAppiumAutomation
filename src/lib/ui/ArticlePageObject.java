@@ -13,6 +13,7 @@ public class ArticlePageObject extends MainPageObject{
         ADD_TO_MY_LIST_OVERLAY = "org.wikipedia:id/onboarding_button",
         MY_LIST_NAME_INPUT = "org.wikipedia:id/text_input",
         MY_LIST_OK_BUTTON = "//*[@text='OK']",
+        MY_CREATE_LIST = "org.wikipedia:id/item_container",
         CLOSE_ARTICLE_BUTTON = "//android.widget.ImageButton[@content-desc='Navigate up']";
     public ArticlePageObject(AppiumDriver driver){
         super(driver);
@@ -81,6 +82,35 @@ public class ArticlePageObject extends MainPageObject{
                 By.xpath(CLOSE_ARTICLE_BUTTON),
                 "Cannot close article, cannot find X link",
                 5
+        );
+    }
+
+    public void addSecondArticleToMyList(){
+        this.waitForElementAndClick(
+                By.xpath(OPTION_BUTTON),
+                "Cannot find button to open article option",
+                5
+        );
+
+        this.waitForMenuSecondAppeared();
+
+        this.waitForElementAndClick(
+                By.xpath(OPTION_ADD_TO_MY_LIST_BUTTON),
+                "Cannot find button to open article options",
+                5
+        );
+
+        this.waitForElementAndClick(
+                By.id(MY_CREATE_LIST),
+                "Cannot find 'My list'",
+                5
+        );
+    }
+
+    public void checkArticleWithoutWait(){
+        this.assertElementPresent(
+                By.id(TITLE),
+                "Cannot find Article"
         );
     }
 }

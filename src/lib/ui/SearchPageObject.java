@@ -1,7 +1,11 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class SearchPageObject extends MainPageObject{
 
@@ -11,7 +15,9 @@ public class SearchPageObject extends MainPageObject{
             SEARCH_CANCEL_BUTTON = "org.wikipedia:id/search_close_btn",
             SEARCH_RESULT_BY_SUBSTRING_TPL = "//*[@text='{SUBSTRING}']",
             SEARCH_RESULT_ELEMENT = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']",
-            SEARCH_EMPTY_RESULT_ELEMENT = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']";
+            SEARCH_RESULT_LIST = "org.wikipedia:id/page_list_item_title",
+            SEARCH_EMPTY_RESULT_ELEMENT = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']",
+            CLEAR_SEARCH_LINE = "org.wikipedia:id/search_src_text";
 
     public SearchPageObject(AppiumDriver driver){
         super(driver);
@@ -67,5 +73,33 @@ public class SearchPageObject extends MainPageObject{
 
      public void assertThereIsNoResultOfSearch(){
         this.assertElementNotPresent(By.xpath(SEARCH_RESULT_ELEMENT), "We supposed not to find any results");
+     }
+
+     public void assertSearchLineContainsText (String search_line_contains){
+         this.assertElementHasText(
+                 By.xpath(SEARH_INIT_ELEMENT),
+                 search_line_contains,
+                 "text is different"
+         );
+     }
+
+     public void clearTheSearchLine(){
+         this.waitForElementAndClear(
+                 By.id(CLEAR_SEARCH_LINE),
+                 "Cannot find search field",
+                 5
+         );
+     }
+
+     public void checkSearchWordInSearchResult(String name_text_check){
+         int elementCount = getAmountOfFoundArticles();
+         System.out.println(elementCount);
+         List<WebElement> elementSearch = driver.findElements(By.id(SEARCH_RESULT_LIST));
+         System.out.println(elementSearch.toString());
+
+         for (int i = 0; i < elementCount; i++) {
+             System.out.println(elementSearch.get(i).getAttribute("text"));
+             Assert.assertTrue(elementSearch.get(i).getAttribute("text").contains(name_text_check));
+         }
      }
 }
