@@ -52,7 +52,7 @@ public class HomeWork3_2 {
                 5);
 
         assertElementPresent(
-                By.id("org.wikipedia:id/view_page_title_text3"),
+                By.id("org.wikipedia:id/view_page_title_text"),
                 "Cannot find Article"
         );
     }
