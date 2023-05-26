@@ -1,18 +1,8 @@
 import lib.CoreTestCase;
-import lib.ui.MainPageObject;
 import lib.ui.SearchPageObject;
-import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 public class HomeWork2_2 extends CoreTestCase {
-    private lib.ui.MainPageObject MainPageObject;
-
-    protected void setUp() throws Exception {
-        super.setUp();
-        MainPageObject = new MainPageObject(driver);
-    }
-
     @Test
     public void testHomeWork2_2() {
 
