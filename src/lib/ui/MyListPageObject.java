@@ -1,6 +1,4 @@
 package lib.ui;
-
-import com.sun.jna.platform.win32.Winspool;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
