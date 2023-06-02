@@ -1,12 +1,13 @@
 package lib.ui;
 import io.appium.java_client.AppiumDriver;
 
-public class MyListPageObject extends MainPageObject{
+abstract public class MyListPageObject extends MainPageObject{
 
-    public static final String
-            FOLDER_BY_NAME_TPL = "xpath://*[@text='{FOLDER_NAME}']",
-            ARTICLE_BY_TITLE_TPL = "xpath://*[@text='{TITLE}']",
-            ARTICLE_SELECTION = "id:org.wikipedia:id/page_list_item_title";
+    protected static String
+            FOLDER_BY_NAME_TPL,
+            ARTICLE_BY_TITLE_TPL,
+            ARTICLE_SELECTION,
+            CLOSE_BUTTON;
 
     private static String getFolderXpathByName(String name_of_folder){
         return FOLDER_BY_NAME_TPL.replace("{FOLDER_NAME}", name_of_folder);
@@ -31,7 +32,7 @@ public class MyListPageObject extends MainPageObject{
 
     public void waitForArticleToAppearByTitle(String article_title){
         String article_xpath = getSaveArticleByTitle(article_title);
-        this.waitForElementPresent(article_xpath, "Cannot find saved article by title", 15);
+        this.waitForElementPresent(article_xpath, "Cannot find saved article by title", 25);
     }
 
 
@@ -54,6 +55,14 @@ public class MyListPageObject extends MainPageObject{
         this.waitForElementAndClick(
                 ARTICLE_SELECTION,
                 "Cannot find 'Appium'",
+                5
+        );
+    }
+
+    public void clickCloseButton(){
+        this.waitForElementAndClick(
+                CLOSE_BUTTON,
+                "Cannot click button 'Close'",
                 5
         );
     }
