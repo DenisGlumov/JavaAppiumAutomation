@@ -141,7 +141,7 @@ public class MainPageObject {
                     action.moveTo(PointOption.point(left_x, middle_y));
                 } else {
                     int offset_x = (-1 * element.getSize().getWidth());
-                    action.moveTo(PointOption.point(offset_x,0));
+                    action.moveTo(PointOption.point(offset_x,middle_y));
                 }
                 action.release();
                 action.perform();

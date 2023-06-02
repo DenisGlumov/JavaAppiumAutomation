@@ -52,8 +52,8 @@ public class Platform {
     private DesiredCapabilities getIOSDesiredCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("deviceName", "IPhone XR");
-        capabilities.setCapability("platformVersion", "16.4");
+        capabilities.setCapability("deviceName", "iPhone Xr");
+        capabilities.setCapability("platformVersion", "16.0");
         capabilities.setCapability("appium:automationName", "XCUITest");
         capabilities.setCapability("app", "/Users/glumovdenis/Desktop/JavaAppiumAutomation/JavaAppiumAutomation/apks/Wikipedia693.app");
         return capabilities;
