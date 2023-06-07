@@ -10,6 +10,8 @@ public class iOSArticlePageObject extends ArticlePageObject {
         OPTION_ADD_TO_MY_LIST_BUTTON = "id:Save for later";
         MY_CREATE_LIST = "id:org.wikipedia:id/item_container";
         CLOSE_ARTICLE_BUTTON = "id:Back";
+       // CLOSE_ARTICLE_BUTTON = "id:Search";
+        //ARTICLE_BY_TITLE_TPL = "xpath://XCUIElementTypeStaticText[@name='{TITLE}']";
     }
 
     public iOSArticlePageObject(AppiumDriver driver){

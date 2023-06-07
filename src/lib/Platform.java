@@ -55,7 +55,7 @@ public class Platform {
         capabilities.setCapability("deviceName", "iPhone Xr");
         capabilities.setCapability("platformVersion", "16.0");
         capabilities.setCapability("appium:automationName", "XCUITest");
-        capabilities.setCapability("app", "/Users/glumovdenis/Desktop/JavaAppiumAutomation/JavaAppiumAutomation/apks/Wikipedia693.app");
+        capabilities.setCapability("app", "/Users/glumovdenis/Desktop/JavaAppiumAutomation/JavaAppiumAutomation/apks/Wikipedia690.app");
         return capabilities;
     }
     private boolean isPlatform(String my_platform){

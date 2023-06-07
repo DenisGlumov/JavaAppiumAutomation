@@ -1,5 +1,6 @@
 package lib.ui;
 import io.appium.java_client.AppiumDriver;
+import lib.Platform;
 
 abstract public class MyListPageObject extends MainPageObject{
 
@@ -48,6 +49,11 @@ abstract public class MyListPageObject extends MainPageObject{
                 article_xpath,
                 "Cannot find saved article"
         );
+
+        if (Platform.getInstance().isIOS()) {
+            this.clickToTheRightUpperCorner(article_xpath, "Cannot find saved article");
+
+        }
         this.waitForArticleToDisappearByTitle(article_title);
     }
 

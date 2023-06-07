@@ -10,7 +10,7 @@ import lib.ui.factories.ArticlePageObjectFactory;
 import lib.ui.factories.MyListPageObjectFactory;
 import lib.ui.factories.NavigationUIFactory;
 import lib.ui.factories.SearchPageObjectFactory;
-import org.apache.tools.ant.taskdefs.Sleep;
+
 import org.junit.Test;
 
 public class MyListsTests extends CoreTestCase {
@@ -45,9 +45,12 @@ public class MyListsTests extends CoreTestCase {
         if (Platform.getInstance().isAndroid()) {
             myListPageObject.openFolderByName(name_of_folder);
         }
-        myListPageObject.clickCloseButton();
 
-        Thread.sleep(4000);
+        if (Platform.getInstance().isIOS()) {
+            myListPageObject.clickCloseButton();
+        }
+
+        Thread.sleep(2000);
 
         myListPageObject.swipeByArticleToDelete(article_title);
     }
